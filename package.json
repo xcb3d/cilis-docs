@@ -16,6 +16,7 @@
     "@liveblocks/react": "^2.16.2",
     "@liveblocks/react-tiptap": "^2.16.2",
     "@liveblocks/react-ui": "^2.16.2",
+    "@radix-ui/react-popover": "^1.1.13",
     "@radix-ui/react-slider": "^1.2.3",
     "@tiptap/extension-bullet-list": "^2.11.5",
     "@tiptap/extension-collaboration": "^2.11.5",
