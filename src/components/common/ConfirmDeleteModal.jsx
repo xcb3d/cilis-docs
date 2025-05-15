@@ -5,8 +5,8 @@ const ConfirmDeleteModal = ({ document, onCancel, onConfirm, isDeleting }) => (
         <div className="bg-white rounded-lg p-6 max-w-md w-full shadow-xl">
             <h3 className="text-lg font-medium mb-4">Xác nhận xóa</h3>
             <p className="text-gray-600 mb-6">
-                Bạn có chắc chắn muốn xóa tài liệu "
-                <span className="font-medium">{document?.title}</span>"?
+                Bạn có chắc chắn muốn xóa tài liệu &quot;
+                <span className="font-medium">{document?.title}</span>&quot;?
                 <br />
                 <span className="text-red-500 text-sm">
                     Hành động này không thể hoàn tác.
