@@ -44,7 +44,7 @@ const DoubleRenderAvatarStack = () => {
       {/* Render lần đầu */}
       {firstRender && (
         <div className="mb-4">
-          <h3 className="text-sm text-gray-500 mb-1">Render lần 1:</h3>
+          <h3 className="text-sm text-gray-500 mb-1">First render:</h3>
           <DynamicAvatarStack />
         </div>
       )}
@@ -52,7 +52,7 @@ const DoubleRenderAvatarStack = () => {
       {/* Render lần thứ hai */}
       {secondRender && (
         <div>
-          <h3 className="text-sm text-gray-500 mb-1">Render lần 2:</h3>
+          <h3 className="text-sm text-gray-500 mb-1">Second render:</h3>
           <DynamicAvatarStack />
         </div>
       )}

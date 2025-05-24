@@ -6,7 +6,7 @@ const Undo = ({ editor }) => {
   return (
     <ToolbarButton
       icon={MdUndo}
-      label="Hoàn tác"
+      label="Undo"
       active={editor.can().undo()}
       disabled={!editor.can().undo()}
       type="Undo"

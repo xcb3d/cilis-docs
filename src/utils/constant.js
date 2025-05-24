@@ -1,10 +1,10 @@
 export const categories = [
-  { title: "Tài liệu trống", template: "empty"},
-  { title: "Ghi chú cá nhân", template: "note"},
-  { title: "Kế hoạch dự án", template: "project"},
-  { title: "Danh sách công việc", template: "timeline"},
-  { title: "Bảng thông báo", template: "announcement"},
-  { title: "Bài viết blog", template: "blog-post"},
+  { title: "Empty Document", template: "empty"},
+  { title: "Personal Notes", template: "note"},
+  { title: "Project Plan", template: "project"},
+  { title: "Task List", template: "timeline"},
+  { title: "Announcement Board", template: "announcement"},
+  { title: "Blog Post", template: "blog-post"},
 ]
 
 export const templates = [
@@ -13,12 +13,12 @@ export const templates = [
     {
       "type": "heading",
       "attrs": { "level": 1 },
-      "content": [{ "type": "text", "text": "Ghi Chú Cá Nhân" }]
+      "content": [{ "type": "text", "text": "Personal Notes" }]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "Đây là không gian để bạn ghi lại các ý tưởng, kế hoạch và suy nghĩ của mình." }
+        { "type": "text", "text": "This is a space for you to write down your ideas, plans and thoughts." }
       ]
     },
     {
@@ -29,7 +29,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Công việc cần làm" }]
+              "content": [{ "type": "text", "text": "Tasks to do" }]
             }
           ]
         },
@@ -38,7 +38,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Ý tưởng sáng tạo" }]
+              "content": [{ "type": "text", "text": "Creative ideas" }]
             }
           ]
         },
@@ -47,7 +47,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Lịch trình ngày mai" }]
+              "content": [{ "type": "text", "text": "Tomorrow's schedule" }]
             }
           ]
         }
@@ -58,12 +58,12 @@ export const templates = [
     {
       "type": "heading",
       "attrs": { "level": 1 },
-      "content": [{ "type": "text", "text": "Kế Hoạch Dự Án" }]
+      "content": [{ "type": "text", "text": "Project Plan" }]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "Dự án: [Tên dự án]" }
+        { "type": "text", "text": "Project: [Project name]" }
       ]
     },
     {
@@ -74,7 +74,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Mục tiêu dự án" }]
+              "content": [{ "type": "text", "text": "Project objectives" }]
             }
           ]
         },
@@ -83,7 +83,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Mốc thời gian quan trọng" }]
+              "content": [{ "type": "text", "text": "Important milestones" }]
             }
           ]
         },
@@ -92,7 +92,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Phân công công việc" }]
+              "content": [{ "type": "text", "text": "Task assignments" }]
             }
           ]
         }
@@ -103,12 +103,12 @@ export const templates = [
     {
       "type": "heading",
       "attrs": { "level": 1 },
-      "content": [{ "type": "text", "text": "Danh Sách Công Việc" }]
+      "content": [{ "type": "text", "text": "Task List" }]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "Ngày: [Ngày hiện tại]" }
+        { "type": "text", "text": "Date: [Current date]" }
       ]
     },
     {
@@ -119,7 +119,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Công việc 1" }]
+              "content": [{ "type": "text", "text": "Task 1" }]
             }
           ]
         },
@@ -128,7 +128,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Công việc 2" }]
+              "content": [{ "type": "text", "text": "Task 2" }]
             }
           ]
         },
@@ -137,7 +137,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Công việc 3" }]
+              "content": [{ "type": "text", "text": "Task 3" }]
             }
           ]
         }
@@ -148,12 +148,12 @@ export const templates = [
     {
       "type": "heading",
       "attrs": { "level": 1 },
-      "content": [{ "type": "text", "text": "Bảng Thông Báo" }]
+      "content": [{ "type": "text", "text": "Announcement Board" }]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "Chào mừng đến với bảng thông báo của chúng tôi!" }
+        { "type": "text", "text": "Welcome to our announcement board!" }
       ]
     },
     {
@@ -164,7 +164,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Thông báo mới" }]
+              "content": [{ "type": "text", "text": "New announcements" }]
             }
           ]
         },
@@ -173,7 +173,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Cập nhật từ đội ngũ" }]
+              "content": [{ "type": "text", "text": "Team updates" }]
             }
           ]
         },
@@ -182,7 +182,7 @@ export const templates = [
           "content": [
             {
               "type": "paragraph",
-              "content": [{ "type": "text", "text": "Sự kiện sắp tới" }]
+              "content": [{ "type": "text", "text": "Upcoming events" }]
             }
           ]
         }
@@ -193,29 +193,29 @@ export const templates = [
     {
       "type": "heading",
       "attrs": { "level": 1 },
-      "content": [{ "type": "text", "text": "Bài Viết Blog" }]
+      "content": [{ "type": "text", "text": "Blog Post" }]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "Tiêu đề: [Tiêu đề bài viết]" }
+        { "type": "text", "text": "Title: [Post title]" }
       ]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "Tóm tắt: [Tóm tắt nội dung bài viết]" }
+        { "type": "text", "text": "Summary: [Post summary]" }
       ]
     },
     {
       "type": "heading",
       "attrs": { "level": 2 },
-      "content": [{ "type": "text", "text": "Nội dung" }]
+      "content": [{ "type": "text", "text": "Content" }]
     },
     {
       "type": "paragraph",
       "content": [
-        { "type": "text", "text": "[Nội dung bài viết]" }
+        { "type": "text", "text": "[Post content]" }
       ]
     }
   ]}

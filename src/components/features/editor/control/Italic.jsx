@@ -6,7 +6,7 @@ const Italic = ({ editor }) => {
   return (
     <ToolbarButton
       icon={FaItalic}
-      label="In nghiêng"
+      label="Italic"
       active={editor.isActive("italic")}
       onClick={() => editor.chain().focus().toggleItalic().run()}
     />

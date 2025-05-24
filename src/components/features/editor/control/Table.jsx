@@ -22,7 +22,7 @@ const TableInserter = ({ editor }) => {
 
   return (
     <div className="relative inline-block">
-      <ToolbarButton icon={Table} onClick={() => setIsOpen(true)} label={"Chèn bảng"}/>
+      <ToolbarButton icon={Table} onClick={() => setIsOpen(true)} label={"Insert table"}/>
 
       {isOpen && (
         <>
@@ -33,8 +33,8 @@ const TableInserter = ({ editor }) => {
           >
             <div className="mb-3 text-sm text-gray-600 font-medium">
               {hoveredCell.row > 0 && hoveredCell.col > 0
-                ? `${hoveredCell.row + 1} × ${hoveredCell.col + 1} bảng`
-                : "Di chuột để chọn kích thước bảng"}
+                ? `${hoveredCell.row + 1} × ${hoveredCell.col + 1} table`
+                : "Hover to select table size"}
             </div>
 
             <div className="grid grid-cols-8 gap-1">
@@ -60,7 +60,7 @@ const TableInserter = ({ editor }) => {
               })}
             </div>
 
-            <div className="mt-3 text-xs text-gray-400">Nhấp để chèn bảng</div>
+            <div className="mt-3 text-xs text-gray-400">Click to insert table</div>
           </div>
         </>
       )}

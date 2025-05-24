@@ -12,7 +12,7 @@ export async function POST(request) {
     const { userId } = auth()
     const { roomId } = await request.json();
 
-    // Tạo room mới
+    // Create new room
     await liveblocks.createRoom(roomId, {
       defaultAccesses: [],
       usersAccesses: {
@@ -27,7 +27,7 @@ export async function POST(request) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error("Lỗi khi tạo room:", error);
+    console.error("Error creating room:", error);
     return NextResponse.json(
       { error: "Error creating room" },
       { status: 500 }

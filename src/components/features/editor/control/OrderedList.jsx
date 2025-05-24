@@ -6,7 +6,7 @@ const OrderedList = ({ editor }) => {
   return (
     <ToolbarButton 
       icon={ListOrdered}
-      label={"Danh sách theo thứ tự"}
+      label={"Ordered list"}
       active={editor.isActive('orderedList')}
       onClick={() => editor.chain().focus().toggleOrderedList().run()}
     />

@@ -5,7 +5,7 @@ const Comment = ({ editor }) => {
   return (
     <ToolbarButton
       icon={FaCommentDots}
-      label="Nhận xét"
+      label="Comment"
       active={false}
       onClick={() => {
         editor.chain().focus().addPendingComment().run()

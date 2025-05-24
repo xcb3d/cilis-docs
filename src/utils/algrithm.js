@@ -7,15 +7,15 @@ export const formatTime = (timestamp) => {
     const diffDays = Math.floor(diffHours / 24);
 
     if (diffMins < 1) {
-        return "Vừa xong";
+        return "Just now";
     } else if (diffMins < 60) {
-        return `${diffMins} phút trước`;
+        return `${diffMins} minutes ago`;
     } else if (diffHours < 24) {
-        return `${diffHours} giờ trước`;
+        return `${diffHours} hours ago`;
     } else if (diffDays < 7) {
-        return `${diffDays} ngày trước`;
+        return `${diffDays} days ago`;
     } else {
-        return date.toLocaleString("vi-VN", {
+        return date.toLocaleString("en-US", {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",

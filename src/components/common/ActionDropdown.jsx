@@ -21,7 +21,7 @@ const ActionDropdown = ({ documentId, document, isOpen, dropdownRef, onDelete, c
                     disabled={currentUserId !== document.creatorId}
                 >
                     <FaTrash className="mr-3 h-4 w-4" />
-                    <span>Xóa tài liệu</span>
+                    <span>Delete document</span>
                 </button>
             </div>
         </div>

@@ -18,7 +18,7 @@ export default function Home() {
     if (isCreating) return; // Ngăn chặn nhiều lần click
     
     setIsCreating(true);
-    const toastId = toast.loading("Đang tạo tài liệu mới...");
+    const toastId = toast.loading("Creating document...");
 
     try {
       // 1. Tạo document trong database
@@ -35,7 +35,7 @@ export default function Home() {
 
       
       if (!response.ok) {
-        throw new Error('Không thể tạo tài liệu');
+        throw new Error('Unable to create document');
       }
 
       const newDoc = await response.json();
@@ -57,7 +57,7 @@ export default function Home() {
         await fetch(`/api/document/${documentId}`, {
           method: 'DELETE'
         });
-        throw new Error('Không thể tạo tài liệu');
+        throw new Error('Unable to create document');
       }
 
       // 3. Tạo Liveblock room thông qua API route mới
@@ -74,14 +74,14 @@ export default function Home() {
         });
 
         if (!roomResponse.ok) {
-          throw new Error('Có lỗi xảy ra. Vui lòng thử lại!');
+          throw new Error('An error occurred. Please try again!');
         }
 
         // 4. Đợi room được tạo
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         toast.update(toastId, {
-          render: "Tạo thành công",
+          render: "Document created successfully",
           type: "success",
           isLoading: false,
           autoClose: 2000,
@@ -101,12 +101,12 @@ export default function Home() {
           method: 'DELETE',
         });
         
-        throw new Error('Có lỗi xảy ra. Vui lòng thử lại!');
+        throw new Error('An error occurred. Please try again!');
       }
 
     } catch (error) {
       toast.update(toastId, {
-        render: error.message || "Có lỗi xảy ra. Vui lòng thử lại!",
+        render: error.message || "An error occurred. Please try again!",
         type: "error",
         isLoading: false,
         autoClose: 3000,
@@ -127,7 +127,7 @@ export default function Home() {
         {/* Background */}  
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-full bg-gradient-to-r bg-gray-100 z-0"></div>
         <div className="flex flex-col my-auto">
-          <span className="text-2xl font-semibold z-10 ml-2">Tạo mới tài liệu</span>
+          <span className="text-2xl font-semibold z-10 ml-2">Create new document</span>
           <div className="flex mt-4 gap-4">
             {categories.map((category, i) => (
               <div className="z-10" key={i}>

@@ -26,14 +26,14 @@ const StatusMessage = ({ accessStatus, errorMessage }) => {
             <div className="absolute inset-0 rounded-full bg-blue-200 opacity-20 animate-pulse blur-xl"></div>
           </div>
           
-          <h3 className="text-2xl font-semibold text-gray-800 mb-3 animate-pulse">Đang tải dữ liệu</h3>
-          <p className="text-gray-600 max-w-xs mx-auto mb-2">Hệ thống đang kiểm tra quyền truy cập của bạn...</p>
+          <h3 className="text-2xl font-semibold text-gray-800 mb-3 animate-pulse">Loading...</h3>
+          <p className="text-gray-600 max-w-xs mx-auto mb-2">The system is checking your access...</p>
           
           {/* Loading progress bar */}
           <div className="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden mt-6 mb-2 max-w-xs mx-auto">
             <div className="bg-blue-500 h-full rounded-full animate-[progressBar_2s_ease-in-out_infinite]"></div>
           </div>
-          <p className="text-sm text-gray-500 italic">Vui lòng đợi trong giây lát</p>
+          <p className="text-sm text-gray-500 italic">Please wait for a moment</p>
           
           <style jsx>{`
             @keyframes progressBar {
@@ -55,14 +55,14 @@ const StatusMessage = ({ accessStatus, errorMessage }) => {
             <ShieldAlert className="h-8 w-8 text-red-600" />
           </div>
           <h3 className="text-xl font-medium text-gray-800 mb-2">
-            Không có quyền truy cập
+            Access denied
           </h3>
-          <p className="text-gray-600 mb-6">{errorMessage || "Bạn không có quyền truy cập vào tài nguyên này."}</p>
+          <p className="text-gray-600 mb-6">{errorMessage || "You do not have access to this resource."}</p>
           <button 
             onClick={() => window.history.back()} 
             className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors duration-300"
           >
-            Quay lại
+            Back
           </button>
         </div>
       </div>
@@ -77,15 +77,15 @@ const StatusMessage = ({ accessStatus, errorMessage }) => {
             <AlertTriangle className="h-8 w-8 text-yellow-600" />
           </div>
           <h3 className="text-xl font-medium text-gray-800 mb-2">
-            Đã xảy ra lỗi
+            An error occurred
           </h3>
-          <p className="text-gray-600 mb-6">{errorMessage || "Có lỗi xảy ra trong quá trình xử lý yêu cầu của bạn."}</p>
+          <p className="text-gray-600 mb-6">{errorMessage || "An error occurred during the processing of your request."}</p>
           <div className="flex space-x-4 justify-center">
             <button 
               onClick={() => window.location.reload()} 
               className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300"
             >
-              Tải lại
+              Reload
             </button>
           </div>
         </div>

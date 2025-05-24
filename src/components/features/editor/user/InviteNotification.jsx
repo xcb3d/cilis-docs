@@ -3,7 +3,7 @@ import { useUser } from "@liveblocks/react/suspense";
 import { useEffect, useState } from "react";
 import { useDocumentData } from "@/hooks/useDocumentData"; // Import custom hook
 import { toast } from 'react-toastify'; // Import toast
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS cho toast
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast
 
 export function InviteNotification({ inboxNotification, token }) {
   const { inviteFrom, roomId } = inboxNotification.activities[0].data;
@@ -12,7 +12,7 @@ export function InviteNotification({ inboxNotification, token }) {
   const { id, subjectId } = inboxNotification;
   inboxNotification.readAt = readAtDate
 
-  // Sử dụng custom hook để fetch document data
+  // Use custom hook to fetch document data
   const { documentData, isLoading, error } = useDocumentData(roomId);
   
   const { user: inviter } = useUser(inviteFrom);
@@ -23,7 +23,7 @@ export function InviteNotification({ inboxNotification, token }) {
     return (
       <InboxNotification.Custom
         inboxNotification={inboxNotification}
-        title="Đang tải..."
+        title="Loading..."
         aside={<InboxNotification.Avatar userId={inviteFrom} />}
       >
         <div>Loading...</div>
@@ -36,17 +36,16 @@ export function InviteNotification({ inboxNotification, token }) {
     return (
       <InboxNotification.Custom
         inboxNotification={inboxNotification}
-        title="Không thể tải thông tin"
+        title="Unable to load document info"
         aside={<InboxNotification.Avatar userId={inviteFrom} />}
       >
-        <div>Đã xảy ra lỗi khi tải thông tin tài liệu</div>
+        <div>An error occurred when loading document info</div>
       </InboxNotification.Custom>
     );
   }
 
   const updateReadAt = async (token, id) => {
     try {
-      console.log(token, id)
       const response = await fetch('https://api.liveblocks.io/v2/c/inbox-notifications/read', {
         method: 'POST',
         headers: {
@@ -62,11 +61,11 @@ export function InviteNotification({ inboxNotification, token }) {
       }
   
       const data = await response.json();
-      return true; // Trả về true nếu cập nhật thành công
+      return true; // Return true if update is successful
   
     } catch (error) {
       console.error("Error updating read at:", error);
-      return false; // Trả về false nếu có lỗi xảy ra
+      return false; // Return false if an error occurs
     }
   }
 
@@ -74,7 +73,7 @@ export function InviteNotification({ inboxNotification, token }) {
     const updated = await updateReadAt(token, id);
     if (updated) {
       setReadAtDate(new Date());
-      // Thực hiện hành động accept
+      // Perform accept action
       try {
         const response = await fetch('/api/liveblock/invite/action', {
           method: 'POST',
@@ -82,23 +81,23 @@ export function InviteNotification({ inboxNotification, token }) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            subjectId: subjectId, // id của lời mời
+            subjectId: subjectId, // invitation id
             action: 'accept'
           }),
         });
   
         if (response.ok) {
           setReadAtDate(new Date());
-          toast.success("Đã chấp nhận lời mời thành công!"); // Hiển thị thông báo thành công
+          toast.success("Invitation accepted successfully!"); // Show success message
         } else {
-          toast.error("Có lỗi xảy ra khi chấp nhận lời mời."); // Hiển thị thông báo lỗi
+          toast.error("An error occurred when accepting invitation."); // Show error message
         }
       } catch (error) {
         console.error("Error accepting invitation:", error);
-        toast.error("Có lỗi xảy ra khi chấp nhận lời mời."); // Hiển thị thông báo lỗi
+        toast.error("An error occurred when accepting invitation."); // Show error message
       }
     } else {
-      toast.error("Có lỗi xảy ra"); // Hiển thị thông báo lỗi
+      toast.error("An error occurred"); // Show error message
     }
   };
 
@@ -106,7 +105,7 @@ export function InviteNotification({ inboxNotification, token }) {
     const updated = await updateReadAt(token, id);
     if (updated) {
       setReadAtDate(new Date());
-      // Thực hiện hành động từ chối
+      // Perform decline action
       try {
         const response = await fetch('/api/liveblock/invite/action', {
           method: 'POST',
@@ -114,23 +113,23 @@ export function InviteNotification({ inboxNotification, token }) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            subjectId: subjectId, // id của lời mời
+            subjectId: subjectId, // invitation id
             action: 'decline'
           }),
         });
   
         if (response.ok) {
           setReadAtDate(new Date());
-          toast.success("Đã chấp nhận lời mời thành công!"); // Hiển thị thông báo thành công
+          toast.success("Invitation accepted successfully!"); // Show success message
         } else {
-          toast.error("Có lỗi xảy ra khi chấp nhận lời mời."); // Hiển thị thông báo lỗi
+          toast.error("An error occurred when accepting invitation."); // Show error message
         }
       } catch (error) {
         console.error("Error accepting invitation:", error);
-        toast.error("Có lỗi xảy ra khi chấp nhận lời mời."); // Hiển thị thông báo lỗi
+        toast.error("An error occurred when accepting invitation."); // Show error message
       }
     } else {
-      toast.error("Có lỗi xảy ra"); // Hiển thị thông báo lỗi
+      toast.error("An error occurred"); // Show error message
     }
   };
 
@@ -139,7 +138,7 @@ export function InviteNotification({ inboxNotification, token }) {
       inboxNotification={inboxNotification}
       title={
         <>
-          <strong>{inviter?.name || 'Unknown user'}</strong> đã mời bạn vào{" "}
+          <strong>{inviter?.name || 'Unknown user'}</strong> invited you to{" "}
           <strong>{documentData.title}</strong>
         </>
       }
@@ -153,13 +152,13 @@ export function InviteNotification({ inboxNotification, token }) {
             onClick={handleAccept}
             className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md"
           >
-            Chấp nhận
+            Accept
           </button>
           <button
             onClick={handleDecline}
             className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"
           >
-            Từ chối
+            Decline
           </button>
         </div>
       )}

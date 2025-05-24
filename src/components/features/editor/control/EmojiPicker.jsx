@@ -2,133 +2,133 @@ import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { Search } from 'lucide-react'
 
 const EMOJI_LIST = [
-  { name: 'Cười', emoji: '😊', category: 'faces' },
-  { name: 'Cười to', emoji: '😁', category: 'faces' },
-  { name: 'Cười ra nước mắt', emoji: '😂', category: 'faces' },
-  { name: 'Cười lăn', emoji: '🤣', category: 'faces' },
-  { name: 'Nháy mắt', emoji: '😉', category: 'faces' },
-  { name: 'Yêu', emoji: '😍', category: 'faces' },
-  { name: 'Hôn', emoji: '😘', category: 'faces' },
-  { name: 'Ngầu', emoji: '😎', category: 'faces' },
-  { name: 'Cười đểu', emoji: '😏', category: 'faces' },
-  { name: 'Suy nghĩ', emoji: '🤔', category: 'faces' },
-  { name: 'Ôm', emoji: '🤗', category: 'faces' },
-  { name: 'Ngáo', emoji: '🤪', category: 'faces' },
-  { name: 'Buồn', emoji: '😢', category: 'faces' },
-  { name: 'Tức giận', emoji: '😠', category: 'faces' },
-  { name: 'Quỷ', emoji: '😈', category: 'faces' },
-  { name: 'Hề', emoji: '🤡', category: 'faces' },
-  { name: 'Trầm ngâm', emoji: '😔', category: 'faces' },
-  { name: 'Lo lắng', emoji: '😟', category: 'faces' },
-  { name: 'Khóc', emoji: '😭', category: 'faces' },
-  { name: 'Hoảng sợ', emoji: '😱', category: 'faces' },
-  { name: 'Ngủ gật', emoji: '😴', category: 'faces' },
-  { name: 'Thèm thuồng', emoji: '🤤', category: 'faces' },
-  { name: 'Mó mắt', emoji: '🤓', category: 'faces' },
-  { name: 'Cao bồi', emoji: '🤠', category: 'faces' },
-  { name: 'Ăn mừng', emoji: '🥳', category: 'faces' },
-  { name: 'Cả trốn', emoji: '🥸', category: 'faces' },
-  { name: 'Suỵt', emoji: '🤫', category: 'faces' },
-  { name: 'Khóa miệng', emoji: '🤐', category: 'faces' },
-  { name: 'Miệng tiền', emoji: '🤑', category: 'faces' },
-  { name: 'Tim', emoji: '❤️', category: 'symbols' },
-  { name: 'Tim cam', emoji: '🧡', category: 'symbols' },
-  { name: 'Tim vàng', emoji: '💛', category: 'symbols' },
-  { name: 'Tim xanh lá', emoji: '💚', category: 'symbols' },
-  { name: 'Tim xanh dương', emoji: '💙', category: 'symbols' },
-  { name: 'Tim tím', emoji: '💜', category: 'symbols' },
-  { name: 'Tim đen', emoji: '🖤', category: 'symbols' },
-  { name: 'Tim nâu', emoji: '🤎', category: 'symbols' },
-  { name: 'Tim trắng', emoji: '🤍', category: 'symbols' },
-  { name: 'Tim long lanh', emoji: '💖', category: 'symbols' },
-  { name: 'Tim tan vỡ', emoji: '💔', category: 'symbols' },
-  { name: 'Hai tay thành công', emoji: '🙌', category: 'gestures' },
-  { name: 'Tay cầm quyền lực', emoji: '✊', category: 'gestures' },
-  { name: 'Bông tỏa sáng', emoji: '⭐', category: 'symbols' },
-  { name: 'Sao long lanh', emoji: '✨', category: 'symbols' },
-  { name: 'Lửa', emoji: '🔥', category: 'nature' },
-  { name: 'Tiệc tùng', emoji: '🎉', category: 'objects' },
-  { name: 'Cúp', emoji: '🏆', category: 'objects' },
-  { name: 'Huy chương', emoji: '🏅', category: 'objects' },
-  { name: 'Bóng đèn', emoji: '💡', category: 'objects' },
-  { name: 'Tên lửa', emoji: '🚀', category: 'objects' },
-  { name: 'Quà', emoji: '🎁', category: 'objects' },
-  { name: 'Vương miện', emoji: '👑', category: 'objects' },
-  { name: 'Kim cương', emoji: '💎', category: 'objects' },
-  { name: 'Tiền', emoji: '💰', category: 'objects' },
+  { name: 'Smile', emoji: '😊', category: 'faces' },
+  { name: 'Smile to', emoji: '😁', category: 'faces' },
+  { name: 'Smile to tears', emoji: '😂', category: 'faces' },
+  { name: 'Laughing', emoji: '🤣', category: 'faces' },
+  { name: 'Wink', emoji: '😉', category: 'faces' },
+  { name: 'Love', emoji: '😍', category: 'faces' },
+  { name: 'Kiss', emoji: '😘', category: 'faces' },
+  { name: 'Cool', emoji: '😎', category: 'faces' },
+  { name: 'Smile', emoji: '😏', category: 'faces' },
+  { name: 'Thinking', emoji: '🤔', category: 'faces' },
+  { name: 'Hug', emoji: '🤗', category: 'faces' },
+  { name: 'Crazy', emoji: '🤪', category: 'faces' },
+  { name: 'Sad', emoji: '😢', category: 'faces' },
+  { name: 'Angry', emoji: '😠', category: 'faces' },
+  { name: 'Devil', emoji: '😈', category: 'faces' },
+  { name: 'Clown', emoji: '🤡', category: 'faces' },
+  { name: 'Troubled', emoji: '😔', category: 'faces' },
+  { name: 'Worried', emoji: '😟', category: 'faces' },
+  { name: 'Cry', emoji: '😭', category: 'faces' },
+  { name: 'Scared', emoji: '😱', category: 'faces' },
+  { name: 'Sleepy', emoji: '😴', category: 'faces' },
+  { name: 'Hungry', emoji: '🤤', category: 'faces' },
+  { name: 'Nerd', emoji: '🤓', category: 'faces' },
+  { name: 'Cowboy', emoji: '🤠', category: 'faces' },
+  { name: 'Celebrating', emoji: '🥳', category: 'faces' },
+  { name: 'Disguised', emoji: '🥸', category: 'faces' },
+  { name: 'Shushing', emoji: '🤫', category: 'faces' },
+  { name: 'Zipped mouth', emoji: '🤐', category: 'faces' },
+  { name: 'Money mouth', emoji: '🤑', category: 'faces' },
+  { name: 'Heart', emoji: '❤️', category: 'symbols' },
+  { name: 'Orange heart', emoji: '🧡', category: 'symbols' },
+  { name: 'Yellow heart', emoji: '💛', category: 'symbols' },
+  { name: 'Green heart', emoji: '💚', category: 'symbols' },
+  { name: 'Blue heart', emoji: '💙', category: 'symbols' },
+  { name: 'Purple heart', emoji: '💜', category: 'symbols' },
+  { name: 'Black heart', emoji: '🖤', category: 'symbols' },
+  { name: 'Brown heart', emoji: '🤎', category: 'symbols' },
+  { name: 'White heart', emoji: '🤍', category: 'symbols' },
+  { name: 'Sparkling heart', emoji: '💖', category: 'symbols' },
+  { name: 'Broken heart', emoji: '💔', category: 'symbols' },
+  { name: 'Raising hands', emoji: '🙌', category: 'gestures' },
+  { name: 'Raised fist', emoji: '✊', category: 'gestures' },
+  { name: 'Star', emoji: '⭐', category: 'symbols' },
+  { name: 'Sparkles', emoji: '✨', category: 'symbols' },
+  { name: 'Fire', emoji: '🔥', category: 'nature' },
+  { name: 'Party', emoji: '🎉', category: 'objects' },
+  { name: 'Trophy', emoji: '🏆', category: 'objects' },
+  { name: 'Medal', emoji: '🏅', category: 'objects' },
+  { name: 'Light bulb', emoji: '💡', category: 'objects' },
+  { name: 'Rocket', emoji: '🚀', category: 'objects' },
+  { name: 'Gift', emoji: '🎁', category: 'objects' },
+  { name: 'Crown', emoji: '👑', category: 'objects' },
+  { name: 'Diamond', emoji: '💎', category: 'objects' },
+  { name: 'Money bag', emoji: '💰', category: 'objects' },
   { name: 'Dollar', emoji: '💵', category: 'objects' },
-  { name: 'Thẻ tín dụng', emoji: '💳', category: 'objects' },
-  { name: 'Hòa chuông', emoji: '🔔', category: 'objects' },
-  { name: 'Khóa', emoji: '🔒', category: 'objects' },
-  { name: 'Mở khóa', emoji: '🔓', category: 'objects' },
-  { name: 'Búa', emoji: '🔨', category: 'objects' },
-  { name: 'Công cụ', emoji: '🛠️', category: 'objects' },
-  { name: 'Cây cảnh', emoji: '🌿', category: 'nature' },
-  { name: 'Trời nắng', emoji: '☀️', category: 'nature' },
-  { name: 'Trăng', emoji: '🌙', category: 'nature' },
-  { name: 'Mây', emoji: '☁️', category: 'nature' },
-  { name: 'Sấm sét', emoji: '⚡', category: 'nature' },
-  { name: 'Ô', emoji: '☔', category: 'nature' },
-  { name: 'Băng tuyết', emoji: '❄️', category: 'nature' },
-  { name: 'Cây thông', emoji: '🎄', category: 'nature' },
-  { name: 'Địa cầu', emoji: '🌍', category: 'nature' },
-  { name: 'Núi lửa', emoji: '🌋', category: 'nature' },
-  { name: 'Biển', emoji: '🌊', category: 'nature' },
-  { name: 'Chó', emoji: '🐶', category: 'nature' },
-  { name: 'Mèo', emoji: '🐱', category: 'nature' },
-  { name: 'Chuột', emoji: '🐭', category: 'nature' },
-  { name: 'Thỏ', emoji: '🐰', category: 'nature' },
-  { name: 'Cáo', emoji: '🦊', category: 'nature' },
-  { name: 'Gấu', emoji: '🐻', category: 'nature' },
-  { name: 'Gấu trúc', emoji: '🐼', category: 'nature' },
-  { name: 'Sư tử', emoji: '🦁', category: 'nature' },
-  { name: 'Con lợn', emoji: '🐷', category: 'nature' },
-  { name: 'Cá heo', emoji: '🐬', category: 'nature' },
-  { name: 'Cá mập', emoji: '🦈', category: 'nature' },
-  { name: 'Con rồng', emoji: '🐉', category: 'nature' },
-  { name: 'Mưa', emoji: '🌧️', category: 'nature' },
-  { name: 'Máy bay', emoji: '✈️', category: 'travel' },
+  { name: 'Credit card', emoji: '💳', category: 'objects' },
+  { name: 'Bell', emoji: '🔔', category: 'objects' },
+  { name: 'Lock', emoji: '🔒', category: 'objects' },
+  { name: 'Unlock', emoji: '🔓', category: 'objects' },
+  { name: 'Hammer', emoji: '🔨', category: 'objects' },
+  { name: 'Tools', emoji: '🛠️', category: 'objects' },
+  { name: 'Plant', emoji: '🌿', category: 'nature' },
+  { name: 'Sun', emoji: '☀️', category: 'nature' },
+  { name: 'Moon', emoji: '🌙', category: 'nature' },
+  { name: 'Cloud', emoji: '☁️', category: 'nature' },
+  { name: 'Lightning', emoji: '⚡', category: 'nature' },
+  { name: 'Umbrella', emoji: '☔', category: 'nature' },
+  { name: 'Snowflake', emoji: '❄️', category: 'nature' },
+  { name: 'Christmas tree', emoji: '🎄', category: 'nature' },
+  { name: 'Earth', emoji: '🌍', category: 'nature' },
+  { name: 'Volcano', emoji: '🌋', category: 'nature' },
+  { name: 'Ocean wave', emoji: '🌊', category: 'nature' },
+  { name: 'Dog', emoji: '🐶', category: 'nature' },
+  { name: 'Cat', emoji: '🐱', category: 'nature' },
+  { name: 'Mouse', emoji: '🐭', category: 'nature' },
+  { name: 'Rabbit', emoji: '🐰', category: 'nature' },
+  { name: 'Fox', emoji: '🦊', category: 'nature' },
+  { name: 'Bear', emoji: '🐻', category: 'nature' },
+  { name: 'Panda', emoji: '🐼', category: 'nature' },
+  { name: 'Lion', emoji: '🦁', category: 'nature' },
+  { name: 'Pig', emoji: '🐷', category: 'nature' },
+  { name: 'Dolphin', emoji: '🐬', category: 'nature' },
+  { name: 'Shark', emoji: '🦈', category: 'nature' },
+  { name: 'Dragon', emoji: '🐉', category: 'nature' },
+  { name: 'Rain', emoji: '🌧️', category: 'nature' },
+  { name: 'Airplane', emoji: '✈️', category: 'travel' },
 ];
 
 
 const CATEGORIES = {
   faces: {
-    name: 'Biểu cảm & Cảm xúc',
+    name: 'Expressions & Emotions',
     icon: '😊',
     emojis: EMOJI_LIST.filter(e => e.category === 'faces')
   },
   symbols: {
-    name: 'Trái tim & Biểu tượng',
+    name: 'Hearts & Symbols',
     icon: '❤️',
     emojis: EMOJI_LIST.filter(e => e.category === 'symbols')
   },
   gestures: {
-    name: 'Cử chỉ',
+    name: 'Gestures',
     icon: '👋',
     emojis: EMOJI_LIST.filter(e => e.category === 'gestures')
   },
   objects: {
-    name: 'Đồ vật',
+    name: 'Objects',
     icon: '💡',
     emojis: EMOJI_LIST.filter(e => e.category === 'objects')
   },
   nature: {
-    name: 'Thiên nhiên & Động vật',
+    name: 'Nature & Animals',
     icon: '🦋',
     emojis: EMOJI_LIST.filter(e => e.category === 'nature')
   },
   food: {
-    name: 'Đồ ăn & Thức uống',
+    name: 'Food & Drinks',
     icon: '🍔',
     emojis: EMOJI_LIST.filter(e => e.category === 'food')
   },
   activities: {
-    name: 'Hoạt động',
+    name: 'Activities',
     icon: '⚽',
     emojis: EMOJI_LIST.filter(e => e.category === 'activities')
   },
   travel: {
-    name: 'Du lịch',
+    name: 'Travel',
     icon: '✈️',
     emojis: EMOJI_LIST.filter(e => e.category === 'travel')
   }
@@ -156,7 +156,7 @@ const EmojiButton = ({ emoji, onClick, className }) => {
         `}
       >
         {emoji.name}
-        {/* Mũi tên tooltip */}
+        {/* Tooltip arrow */}
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mt-[1px]">
           <div className="border-4 border-transparent border-b-gray-800" />
         </div>
@@ -165,7 +165,6 @@ const EmojiButton = ({ emoji, onClick, className }) => {
   )
 }
 
-// Thêm component CategoryButton
 const CategoryButton = ({ category, id, isActive, onClick }) => {
   const [showTooltip, setShowTooltip] = useState(false)
 
@@ -190,7 +189,7 @@ const CategoryButton = ({ category, id, isActive, onClick }) => {
         `}
       >
         {category.name}
-        {/* Mũi tên tooltip */}
+        {/* Tooltip arrow */}
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mt-[1px]">
           <div className="border-4 border-transparent border-b-gray-800" />
         </div>
@@ -255,10 +254,10 @@ const EmojiPicker = ({ editor, show, onHide, position }) => {
       }
     }
 
-    // Lắng nghe sự kiện update của editor
+    // Listen for editor update events
     editor.on('update', updateSearch)
     
-    // Chạy lần đầu khi component mount
+    // Run initially when component mounts
     updateSearch()
 
     return () => {
@@ -324,7 +323,7 @@ const EmojiPicker = ({ editor, show, onHide, position }) => {
             type="text"
             value={searchQuery}
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Tìm kiếm emoji..."
+            placeholder="Search emoji..."
             className="w-full pl-8 pr-2 py-1.5 rounded bg-gray-100 text-sm"
           />
           <Search className="w-4 h-4 absolute left-2 top-2 text-gray-400" />

@@ -5,7 +5,7 @@ const Bold = ({ editor }) => {
   return (
     <ToolbarButton
       icon={FaBold}
-      label="In đậm"
+      label="Bold"
       active={editor.isActive("bold")}
       onClick={() => editor.chain().focus().toggleBold().run()}
     />

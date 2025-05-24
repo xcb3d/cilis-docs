@@ -6,7 +6,7 @@ const BulletList = ({ editor }) => {
   return (
     <ToolbarButton 
       icon={List}
-      label={"Danh sách có dấu đầu dòng"}
+      label={"Bullet List"}
       active={editor.isActive('bulletList')}
       onClick={() => editor.chain().focus().toggleBulletList().run()}
     />

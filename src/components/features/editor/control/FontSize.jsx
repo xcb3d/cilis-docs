@@ -75,7 +75,7 @@ const FontSize = ({ editor }) => {
       <ToolbarButton 
         onClick={() => handleFontSizeChange(-2)}
         icon={Minus}
-        label="Giảm cỡ chữ"
+        label="Decrease font size"
       />
       <div
         className="relative group"
@@ -117,8 +117,8 @@ const FontSize = ({ editor }) => {
             z-20
           `}
         >
-          Cỡ chữ
-          {/* Mũi tên tooltip pointing upward */}
+          Font size
+          {/* Arrow tooltip pointing upward */}
           <div className="absolute bottom-full left-1/2 -translate-x-1/2 mt-[1px]">
             <div className="border-4 border-transparent border-b-gray-800" />
           </div>
@@ -127,7 +127,7 @@ const FontSize = ({ editor }) => {
       <ToolbarButton 
         onClick={() => handleFontSizeChange(2)}
         icon={Plus}
-        label="Giảm cỡ chữ"
+        label="Increase font size"
       />
     </div>
   );

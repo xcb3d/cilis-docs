@@ -11,52 +11,52 @@ const TextColorPicker = ({ editor }) => {
   
   const defaultColors = [
     [
-      { color: '#000000', label: 'Đen' },
-      { color: '#404040', label: 'Xám đậm' },
-      { color: '#808080', label: 'Xám' },
-      { color: '#C0C0C0', label: 'Bạc' },
-      { color: '#FFFFFF', label: 'Trắng' },
-      { color: '#E6E6E6', label: 'Xám nhạt' },
-      { color: '#CCCCCC', label: 'Xám nhạt 2' },
-      { color: '#0000FF', label: 'Xanh dương' },
-      { color: '#800080', label: 'Tím' },
-      { color: '#FF00FF', label: 'Hồng tím' }
+      { color: '#000000', label: 'Black' },
+      { color: '#404040', label: 'Dark Gray' },
+      { color: '#808080', label: 'Gray' },
+      { color: '#C0C0C0', label: 'Silver' },
+      { color: '#FFFFFF', label: 'White' },
+      { color: '#E6E6E6', label: 'Light Gray' },
+      { color: '#CCCCCC', label: 'Light Gray 2' },
+      { color: '#0000FF', label: 'Blue' },
+      { color: '#800080', label: 'Purple' },
+      { color: '#FF00FF', label: 'Magenta' }
     ],
     [
-      { color: '#FFC0CB', label: 'Hồng nhạt' },
-      { color: '#FFE4E1', label: 'Hồng phấn' },
-      { color: '#FFFACD', label: 'Vàng nhạt' },
-      { color: '#F0FFF0', label: 'Xanh lá nhạt' },
-      { color: '#E0FFFF', label: 'Xanh biển nhạt' },
-      { color: '#E6E6FA', label: 'Tím nhạt' },
-      { color: '#B0C4DE', label: 'Xanh thép nhạt' },
-      { color: '#ADD8E6', label: 'Xanh biển nhạt' },
-      { color: '#DDA0DD', label: 'Tím hoa cà' },
-      { color: '#EE82EE', label: 'Tím violet' }
+      { color: '#FFC0CB', label: 'Light Pink' },
+      { color: '#FFE4E1', label: 'Powder Pink' },
+      { color: '#FFFACD', label: 'Light Yellow' },
+      { color: '#F0FFF0', label: 'Light Green' },
+      { color: '#E0FFFF', label: 'Light Blue' },
+      { color: '#E6E6FA', label: 'Light Purple' },
+      { color: '#B0C4DE', label: 'Light Steel Blue' },
+      { color: '#ADD8E6', label: 'Light Blue' },
+      { color: '#DDA0DD', label: 'Plum' },
+      { color: '#EE82EE', label: 'Violet' }
     ],
     [
-      { color: '#CD5C5C', label: 'Đỏ nâu' },
-      { color: '#F08080', label: 'Đỏ san hô' },
-      { color: '#FFD700', label: 'Vàng' },
-      { color: '#90EE90', label: 'Xanh lá nhạt' },
-      { color: '#98FB98', label: 'Xanh lá mint' },
-      { color: '#87CEEB', label: 'Xanh da trời' },
-      { color: '#6495ED', label: 'Xanh cornflower' },
-      { color: '#4682B4', label: 'Xanh thép' },
-      { color: '#483D8B', label: 'Xanh đen' },
-      { color: '#9370DB', label: 'Tím trung bình' }
+      { color: '#CD5C5C', label: 'Brown Red' },
+      { color: '#F08080', label: 'Coral Red' },
+      { color: '#FFD700', label: 'Yellow' },
+      { color: '#90EE90', label: 'Light Green' },
+      { color: '#98FB98', label: 'Mint Green' },
+      { color: '#87CEEB', label: 'Sky Blue' },
+      { color: '#6495ED', label: 'Cornflower Blue' },
+      { color: '#4682B4', label: 'Steel Blue' },
+      { color: '#483D8B', label: 'Dark Blue' },
+      { color: '#9370DB', label: 'Medium Purple' }
     ],
     [
-      { color: '#8B0000', label: 'Đỏ đậm' },
-      { color: '#A52A2A', label: 'Nâu' },
-      { color: '#DAA520', label: 'Vàng đậm' },
-      { color: '#006400', label: 'Xanh lá đậm' },
-      { color: '#008000', label: 'Xanh lá' },
-      { color: '#0000CD', label: 'Xanh dương đậm' },
-      { color: '#000080', label: 'Xanh navy' },
-      { color: '#4B0082', label: 'Chàm' },
-      { color: '#800080', label: 'Tím đậm' },
-      { color: '#8B008B', label: 'Tím đỏ' }
+      { color: '#8B0000', label: 'Dark Red' },
+      { color: '#A52A2A', label: 'Brown' },
+      { color: '#DAA520', label: 'Dark Yellow' },
+      { color: '#006400', label: 'Dark Green' },
+      { color: '#008000', label: 'Green' },
+      { color: '#0000CD', label: 'Dark Blue' },
+      { color: '#000080', label: 'Navy Blue' },
+      { color: '#4B0082', label: 'Indigo' },
+      { color: '#800080', label: 'Dark Purple' },
+      { color: '#8B008B', label: 'Red Purple' }
     ]
   ];
 
@@ -111,7 +111,7 @@ const TextColorPicker = ({ editor }) => {
       <button 
         className="relative flex flex-col items-center pl-1 pr-1 pb-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 group"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Chọn màu văn bản"
+        aria-label="Choose text color"
       >
         {/* Text Color Icon */}
         <div className="flex items-center justify-center w-6 h-6">
@@ -123,7 +123,7 @@ const TextColorPicker = ({ editor }) => {
           style={{ backgroundColor: selectedColor }}
         />
         
-        {/* Tooltip cho button chính */}
+        {/* Tooltip for main button */}
         <div 
           className={`
             absolute top-full left-1/2 -translate-x-1/2 mt-1
@@ -134,8 +134,8 @@ const TextColorPicker = ({ editor }) => {
             z-20
           `}
         >
-          Màu văn bản
-          {/* Mũi tên tooltip */}
+          Text Color
+          {/* Tooltip arrow */}
           <div className="absolute bottom-full left-1/2 -translate-x-1/2 mt-[1px]">
             <div className="border-4 border-transparent border-b-gray-800" />
           </div>
@@ -155,7 +155,7 @@ const TextColorPicker = ({ editor }) => {
                     style={{ backgroundColor: color }}
                     onClick={() => handleColorClick(color)}
                   >
-                    {/* Tooltip cho từng màu */}
+                    {/* Tooltip for each color */}
                     <div 
                       className={`
                         absolute bottom-full left-1/2 -translate-x-1/2 mt-1
@@ -167,7 +167,7 @@ const TextColorPicker = ({ editor }) => {
                       `}
                     >
                       {label}
-                      {/* Mũi tên tooltip */}
+                      {/* Tooltip arrow */}
                       <div className="absolute top-full left-1/2 -translate-x-1/2 z-20">
                         <div className="border-4 border-transparent border-t-gray-800" />
                       </div>
@@ -190,7 +190,7 @@ const TextColorPicker = ({ editor }) => {
             }}
           >
             <span className="text-lg">+</span>
-            Tùy chỉnh
+            Custom
           </button>
 
           {/* Recent Colors */}
@@ -198,7 +198,7 @@ const TextColorPicker = ({ editor }) => {
             <>
               <div className="h-px bg-gray-200 my-3" />
               <div className="space-y-2">
-                <div className="text-xs text-gray-500 font-medium">Màu gần đây</div>
+                <div className="text-xs text-gray-500 font-medium">Recent Colors</div>
                 <div className="flex flex-wrap gap-1">
                   {recentColors.map((color, index) => (
                     <button

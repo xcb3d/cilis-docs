@@ -4,7 +4,7 @@ import { auth } from '@clerk/nextjs'
 
 export async function GET(req) {
   try {
-      // Xác thực với Clerk
+      // Authentication with Clerk
       const { userId } = auth()
       if (!userId) {
           return NextResponse.json({
@@ -14,17 +14,17 @@ export async function GET(req) {
           }, { status: 401 })
       }
 
-      // Lấy params từ URL
+      // Get params from URL
       const { searchParams } = new URL(req.url)
       const text = searchParams.get('text')
       const roomId = searchParams.get('roomId')
 
-      // Kết nối database
+      // Connect to database
       const client = await clientPromise
       const db = client.db('calis-docs')
       const usersCollection = db.collection('users')
 
-      // Tìm users thỏa mãn điều kiện
+      // Find users matching conditions
       const users = await usersCollection.find({
           username: { 
               $regex: text, 
@@ -41,11 +41,11 @@ export async function GET(req) {
           }
       }).toArray()
 
-      // Trả về response với cache headers
+      // Return response with cache headers
       const userIds = users.map(user => user.userId)
       return NextResponse.json({
           status: "success",
-          message: "Tìm thấy người dùng",
+          message: "Users found",
           userIds
       }, { 
           status: 200,
@@ -55,10 +55,10 @@ export async function GET(req) {
       })
 
   } catch (error) {
-      console.error('Lỗi khi tìm users:', error)
+      console.error('Error finding users:', error)
       return NextResponse.json({
           status: "error",
-          message: "Lỗi server",
+          message: "Server error",
           users: []
       }, { status: 500 })
   }

@@ -34,20 +34,20 @@ export function Room({ children, id }) {
           case "forbidden":
             setAccessStatus("denied");
             setErrorMessage(
-              data.message || "Bạn không có quyền truy cập tài liệu này"
+              data.message || "You don't have access to this document"
             );
             break;
           case "unauthorized":
             setAccessStatus("denied");
-            setErrorMessage(data.message || "Vui lòng đăng nhập để tiếp tục");
+            setErrorMessage(data.message || "Please login to continue");
             break;
           default:
             setAccessStatus("error");
-            setErrorMessage(data.message || "Đã có lỗi xảy ra");
+            setErrorMessage(data.message || "An error occurred");
         }
       } catch (error) {
         setAccessStatus("error");
-        setErrorMessage("Không thể kết nối đến máy chủ");
+        setErrorMessage("Unable to connect to server");
       }
     };
 

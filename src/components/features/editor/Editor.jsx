@@ -117,7 +117,7 @@ const Editor = ({ template }) => {
 
 
   const handleContextMenu = useCallback((event) => {
-    // Kiểm tra xem có phải đang click vào table không
+    // Check if clicking on a table
     const isTableNode = event.target.closest('.tableWrapper');
 
     if (isTableNode) {

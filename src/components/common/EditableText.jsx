@@ -30,7 +30,7 @@ const EditableText = ({ initialText, onUpdate }) => {
     
     // Kiểm tra và xử lý văn bản rỗng ngay lập tức khi thoát khỏi chế độ chỉnh sửa
     if (!text?.trim()) {
-      const defaultTitle = "Tài liệu mới";
+      const defaultTitle = "Empty document";
       setText(defaultTitle);
       setDebouncedText(defaultTitle);
       onUpdate(defaultTitle);

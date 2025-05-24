@@ -5,7 +5,7 @@ const Print = ({ editor }) => {
   return (
     <ToolbarButton
       icon={IoPrintOutline}
-      label="In"
+      label="Print"
       // active={true}
       onClick={() => window.print()}
     />

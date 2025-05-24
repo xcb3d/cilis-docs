@@ -8,7 +8,7 @@ const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY,
 });
 
-// Hàm kiểm tra ObjectId hợp lệ
+// Function to validate ObjectId
 function isValidObjectId(id) {
   try {
     new ObjectId(id);
@@ -34,11 +34,11 @@ export async function POST(req) {
     
     const { room: roomId, type } = await req.json();
 
-    // Nếu type là getNoti thì không cần kiểm tra quyền
+    // If type is getNoti, no need to check permissions
     if (type === 'getNoti' && (roomId === undefined || roomId === 'abcd')) {
       const session = liveblocks.prepareSession(userId, {
         userInfo: {
-          name: user?.username || "Khách",
+          name: user?.username || "Guest",
           email: user?.emailAddresses[0]?.emailAddress,
           avatar: user?.imageUrl,
         },
@@ -47,7 +47,7 @@ export async function POST(req) {
       const { body } = await session.authorize();
       return NextResponse.json({
         status: "success",
-        message: "Đã cấp quyền truy cập đầy đủ",
+        message: "Full access granted",
         token: JSON.parse(body).token
       }); 
     }
@@ -62,18 +62,18 @@ export async function POST(req) {
       return NextResponse.json({ token });
     }
     
-    // Kiểm tra xem roomId có phải là ObjectId hợp lệ không
+    // Check if roomId is a valid ObjectId
     if (!isValidObjectId(roomId)) {
       return NextResponse.json(
         {
           status: "not_found",
-          message: "Phòng không tồn tại"
+          message: "Room does not exist"
         },
         { status: 404 }
       );
     }
     
-    // Kiểm tra quyền truy cập từ database
+    // Check access permissions from database
     const client = await clientPromise;
     const db = client.db('calis-docs');
     const usersCollection = db.collection('users');
@@ -83,21 +83,21 @@ export async function POST(req) {
       { projection: { documentIds: 1, _id: 0 } }
     );
 
-    // Kiểm tra xem user có quyền truy cập document này không
+    // Check if user has access to this document
     if (!userDoc?.documentIds?.includes(roomId)) {
       return NextResponse.json(
         {
           status: "forbidden",
-          message: "Không có quyền truy cập document này"
+          message: "No access to this document"
         },
         { status: 403 }
       );
     }
 
-    // Nếu có quyền, tạo session với full access
+    // If user has permission, create session with full access
     const session = liveblocks.prepareSession(userId, {
       userInfo: {
-        name: user?.username || "Khách",
+        name: user?.username || "Guest",
         email: user?.emailAddresses[0]?.emailAddress,
         avatar: user?.imageUrl,
       },
@@ -106,7 +106,7 @@ export async function POST(req) {
     const { body } = await session.authorize();
     return NextResponse.json({
       status: "success",
-      message: "Đã cấp quyền truy cập đầy đủ",
+      message: "Full access granted",
       token: JSON.parse(body).token
     });
 

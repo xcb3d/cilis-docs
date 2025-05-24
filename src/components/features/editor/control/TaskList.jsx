@@ -6,7 +6,7 @@ const TaskList = ({ editor }) => {
   return (
     <ToolbarButton 
       icon={ListTodo}
-      label={"Danh sách đánh dấu"}
+      label={"Task List"}
       active={editor.isActive('taskList')}
       onClick={() => editor.chain().focus().toggleTaskList().run()}
     />

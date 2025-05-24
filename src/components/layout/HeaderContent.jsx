@@ -69,7 +69,7 @@ const HeaderContent = ({ id }) => {
 
   useEffect(() => {
     if (documentTitle.length === 0) {
-      setDocumentTitle("Tài liệu mới");
+      setDocumentTitle("Empty document");
     }
   }, [documentTitle]);
 
@@ -88,7 +88,7 @@ const HeaderContent = ({ id }) => {
         const data = await documentService.updateDocument(documentId, newTitle);
 
         if (!response.ok) {
-          throw new Error(data.error || "Có lỗi xảy ra khi cập nhật title");
+          throw new Error(data.error || "An error occurred while updating title");
         }
 
         setDocumentTitle(newTitle);
@@ -106,7 +106,7 @@ const HeaderContent = ({ id }) => {
       // window.location.href = "/sign-in";
       router.push("/sign-in");
     } catch (error) {
-      console.error("Lỗi khi đăng xuất:", error);
+      console.error("Error when signing out:", error);
     }
   };
 

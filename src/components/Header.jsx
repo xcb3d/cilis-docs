@@ -48,7 +48,7 @@ const Header = ({ id }) => {
         });
 
         if (!response.ok) {
-          throw new Error('Không thể lấy thông tin tài liệu');
+          throw new Error('Unable to get document info');
         }
         const data = await response.json();
         return data;

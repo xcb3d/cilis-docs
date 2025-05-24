@@ -6,7 +6,7 @@ const Underline = ({ editor }) => {
   return (
     <ToolbarButton
       icon={FaUnderline}
-      label="Gạch chân"
+      label="Underline"
       active={editor.isActive("underline")}
       onClick={() => editor.chain().focus().toggleUnderline().run()}
     />

@@ -20,13 +20,11 @@ import useAuth from "@/hooks/useAuth";
 
 function Notification({ className, ...props }) {
   const { inboxNotifications } = useInboxNotifications();
-  console.log('inboxNotifications', inboxNotifications);
   const { token } = useAuth();
-  console.log('token', token)
 
   return inboxNotifications.length === 0 ? (
     <div className={clsx(className, "empty")}>
-      Không có thông báo nào
+      No notifications
     </div>
   ) : (
     <div className={className} {...props}>

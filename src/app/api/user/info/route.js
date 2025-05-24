@@ -4,7 +4,7 @@ import { auth } from '@clerk/nextjs'
 
 export async function GET(req) {
   try {
-      // Xác thực với Clerk
+      // Authentication with Clerk
       const { userId } = auth()
       if (!userId) {
           return NextResponse.json({
@@ -14,7 +14,7 @@ export async function GET(req) {
           }, { status: 401 })
       }
 
-      // Lấy userIds từ query params
+      // Get userIds from query params
       const { searchParams } = new URL(req.url)
       const userIdsString = searchParams.get('userIds')
       
@@ -26,15 +26,15 @@ export async function GET(req) {
           }, { status: 400 })
       }
 
-      // Split string thành array
+      // Split string into array
       const userIds = userIdsString.split(',')
 
-      // Kết nối database
+      // Connect to database
       const client = await clientPromise
       const db = client.db('calis-docs')
       const usersCollection = db.collection('users')
 
-      // Tìm tất cả users có userId nằm trong mảng userIds
+      // Find all users with userId in the userIds array
       const users = await usersCollection.find(
           { 
               userId: { $in: userIds }
@@ -48,7 +48,7 @@ export async function GET(req) {
           }
       ).toArray()
 
-      // Format lại data theo yêu cầu
+      // Format data according to requirements
       const formattedUsers = users.map(user => ({
           name: user.username,
           avatar: user.imageUrl || "https://liveblocks.io/avatars/avatar-1.png"
@@ -65,10 +65,10 @@ export async function GET(req) {
       })
 
   } catch (error) {
-      console.error('Lỗi khi lấy thông tin users:', error)
+      console.error('Error getting user information:', error)
       return NextResponse.json({
           status: "error",
-          message: "Lỗi server",
+          message: "Server error",
           users: []
       }, { status: 500 })
   }

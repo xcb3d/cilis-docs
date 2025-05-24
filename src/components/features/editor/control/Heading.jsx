@@ -3,13 +3,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 const Heading = ({ editor }) => {
   const headingOptions = [
-    { label: "Văn bản thường", value: "paragraph" },  
-    { label: "Tiêu đề 1", value: "h1" },
-    { label: "Tiêu đề 2", value: "h2" },
-    { label: "Tiêu đề 3", value: "h3" },
-    { label: "Tiêu đề 4", value: "h4" },
-    { label: "Tiêu đề 5", value: "h5" },
-    { label: "Tiêu đề 6", value: "h6" },
+    { label: "Paragraph", value: "paragraph" },  
+    { label: "Heading 1", value: "h1" },
+    { label: "Heading 2", value: "h2" },
+    { label: "Heading 3", value: "h3" },
+    { label: "Heading 4", value: "h4" },
+    { label: "Heading 5", value: "h5" },
+    { label: "Heading 6", value: "h6" },
   ];
   
   const dropdownRef = useRef(null);
@@ -17,7 +17,7 @@ const Heading = ({ editor }) => {
   const [selectedHeading, setSelectedHeading] = useState("paragraph");
   const [showTooltip, setShowTooltip] = useState(false);
 
-  // Xử lý click outside
+  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -41,7 +41,7 @@ const Heading = ({ editor }) => {
     setIsPopupOpen(false);
   };
 
-  // Theo dõi thay đổi heading
+  // Track changes in heading
   useEffect(() => {
     const updateHeading = ({ editor }) => {
       headingOptions.forEach(({ value }) => {
@@ -69,7 +69,7 @@ const Heading = ({ editor }) => {
 
   const getCurrentHeadingLabel = () => {
     const option = headingOptions.find(opt => opt.value === selectedHeading);
-    return option ? option.label : "Văn bản thường";
+    return option ? option.label : "Normal text";
   };
 
   return (
@@ -107,7 +107,7 @@ const Heading = ({ editor }) => {
           z-20
         `}
       >
-        Định dạng tiêu đề
+        Heading format
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mt-[1px]">
           <div className="border-4 border-transparent border-b-gray-800" />
         </div>

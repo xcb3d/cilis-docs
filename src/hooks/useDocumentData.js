@@ -14,7 +14,7 @@ export function useDocumentData(roomId) {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || "Có lỗi xảy ra khi lấy thông tin tài liệu");
+          throw new Error(data.error || "An error occurred when loading document data");
         }
 
         setDocumentData({ title: data.title });

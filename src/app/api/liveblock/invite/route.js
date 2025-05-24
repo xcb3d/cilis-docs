@@ -24,14 +24,14 @@ export async function POST(request) {
     const { email, data } = body;
 
     if (!email || !data) {
-      return new Response(JSON.stringify({ message: "Thiếu thông tin bắt buộc", status: 400 }), { status: 400 });
+      return new Response(JSON.stringify({ message: "Missing required information", status: 400 }), { status: 400 });
     }
 
     // Tìm userId của email
     const user = await db.collection("users").findOne({ email: email });
 
     if (!user) {
-      return new Response(JSON.stringify({ message: "Email không tồn tại", status: 404 }), { status: 404 });
+      return new Response(JSON.stringify({ message: "Email does not exist", status: 404 }), { status: 404 });
     }
 
     const document = await db.collection("documents").findOne({ 
@@ -41,7 +41,7 @@ export async function POST(request) {
 
     if (document) {
       return new Response(JSON.stringify({ 
-        message: "Người dùng đã là thành viên của tài liệu này", 
+        message: "This user is already a member of this document", 
         status: 409 
       }), { status: 409 });
     }    
@@ -57,7 +57,7 @@ export async function POST(request) {
     });
 
     if (existingInvite) {
-      return new Response(JSON.stringify({ message: "Người dùng đã nhận lời mời hoặc đã tham gia tài liệu", status: 409 }), { status: 409 });
+      return new Response(JSON.stringify({ message: "This user has already received an invitation or joined the document", status: 409 }), { status: 409 });
     }
 
     const invitedData = {
@@ -88,13 +88,13 @@ export async function POST(request) {
 
     } catch (error) {
       console.error("Liveblocks notification error:", error);
-      return new Response(JSON.stringify({ message: "Không thể gửi lời mời", status: 500 }), { status: 500 });
+      return new Response(JSON.stringify({ message: "Unable to send invitation", status: 500 }), { status: 500 });
     }
 
     // Trả về thành công
-    return new Response(JSON.stringify({ message: "Đã gửi lời mời thành công", status: 200 }), { status: 200 });
+    return new Response(JSON.stringify({ message: "Invitation sent successfully", status: 200 }), { status: 200 });
   } catch (error) {
     console.error("Error in POST request:", error);
-    return new Response(JSON.stringify({ message: "Có lỗi xảy ra", status: 500 }), { status: 500 });
+    return new Response(JSON.stringify({ message: "An error occurred", status: 500 }), { status: 500 });
   }
 }

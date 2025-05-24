@@ -4,17 +4,17 @@ import ToolbarButton from "@/components/common/ToolbarButton";
 
 const TextAlign = ({ editor }) => {
   const alignOptions = [
-    { label: "Căn trái", value: "left", icon: AlignLeft },
-    { label: "Căn giữa", value: "center", icon: AlignCenter },
-    { label: "Căn phải", value: "right", icon: AlignRight },
-    { label: "Căn đều", value: "justify", icon: AlignJustify },
+    { label: "Left align", value: "left", icon: AlignLeft },
+    { label: "Center align", value: "center", icon: AlignCenter },
+    { label: "Right align", value: "right", icon: AlignRight },
+    { label: "Justify", value: "justify", icon: AlignJustify },
   ];
 
   const popupRef = useRef(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedAlign, setSelectedAlign] = useState("left");
 
-  // Xử lý click outside
+  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -34,7 +34,7 @@ const TextAlign = ({ editor }) => {
     setIsPopupOpen(false);
   };
 
-  // Theo dõi thay đổi text align
+  // Track text align changes
   useEffect(() => {
     const updateAlign = ({ editor }) => {
       alignOptions.forEach(({ value }) => {
@@ -60,7 +60,7 @@ const TextAlign = ({ editor }) => {
       {/* Main Button */}
       <ToolbarButton
         icon={CurrentIcon}
-        label="Căn chỉnh văn bản"
+        label="Text alignment"
         onClick={() => setIsPopupOpen(!isPopupOpen)}
         active={isPopupOpen}
         size="md"

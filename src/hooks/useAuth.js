@@ -21,14 +21,13 @@ const useAuth = () => {
         });
 
         if (!response.ok) {
-          throw new Error('Lỗi đăng nhập');
+          throw new Error('Login error');
         }
 
         const data = await response.json();
         setToken(data.token);
-        console.log('data.token:', data.token);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Có lỗi xảy ra'));
+        setError(err instanceof Error ? err : new Error('An error occurred'));
       } finally {
         setLoading(false);
       }

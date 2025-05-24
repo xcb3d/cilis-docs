@@ -20,12 +20,12 @@ const ImageUpload = ({ editor }) => {
     const file = e.target.files?.[0]
     if (file) {
       if (!file.type.startsWith('image/')) {
-        alert('Vui lòng chọn file ảnh')
+        alert('Please select an image file')
         return
       }
 
       if (file.size > 5 * 1024 * 1024) {
-        alert('File ảnh không được vượt quá 5MB')
+        alert('Image file must not exceed 5MB')
         return
       }
 
@@ -55,12 +55,12 @@ const ImageUpload = ({ editor }) => {
     const file = e.dataTransfer.files[0]
     if (file) {
       if (!file.type.startsWith('image/')) {
-        alert('Vui lòng chọn file ảnh')
+        alert('Please select an image file')
         return
       }
 
       if (file.size > 5 * 1024 * 1024) {
-        alert('File ảnh không được vượt quá 5MB')
+        alert('Image file must not exceed 5MB')
         return
       }
 
@@ -84,7 +84,7 @@ const ImageUpload = ({ editor }) => {
     <>
       <ToolbarButton 
         onClick={() => setIsOpen(true)}
-        label="Chèn hình ảnh"
+        label="Insert image"
         icon={ImageIcon}
       />
 
@@ -97,7 +97,7 @@ const ImageUpload = ({ editor }) => {
           
           <div className="relative bg-white rounded-lg w-full max-w-md p-6 shadow-xl transform transition-all duration-300 scale-100 opacity-100">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-semibold text-gray-900">Thêm hình ảnh</h3>
+              <h3 className="text-xl font-semibold text-gray-900">Add Image</h3>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
@@ -117,7 +117,7 @@ const ImageUpload = ({ editor }) => {
                   }`}
                   onClick={() => setActiveTab(tab)}
                 >
-                  {tab === 'upload' ? 'Upload ảnh' : 'URL ảnh'}
+                  {tab === 'upload' ? 'Upload image' : 'Image URL'}
                 </button>
               ))}
             </div>
@@ -143,7 +143,7 @@ const ImageUpload = ({ editor }) => {
                         isDragging ? 'text-blue-500' : 'text-gray-400'
                       }`} />
                       <p className="text-sm text-gray-600 font-medium mb-1">
-                        Kéo thả ảnh vào đây hoặc click để chọn
+                        Drag and drop image here or click to select
                       </p>
                       <p className="text-xs text-gray-500">
                         PNG, JPG, GIF (Max: 5MB)
@@ -165,7 +165,7 @@ const ImageUpload = ({ editor }) => {
                       htmlFor="image-url" 
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      URL hình ảnh
+                      Image URL
                     </label>
                     <input
                       id="image-url"
@@ -181,7 +181,7 @@ const ImageUpload = ({ editor }) => {
                     disabled={!imageUrl.trim()}
                     className="w-full px-4 py-2.5 text-white bg-blue-600 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    Chèn ảnh
+                    Insert image
                   </button>
                 </form>
               )}

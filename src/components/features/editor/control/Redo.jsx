@@ -6,7 +6,7 @@ const Redo = ({ editor }) => {
   return (
     <ToolbarButton
       icon={MdRedo}
-      label="Làm lại"
+      label="Redo"
       active={editor.can().redo()}
       disabled={!editor.can().redo()}
       type="Redo"

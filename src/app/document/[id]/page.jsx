@@ -38,7 +38,7 @@ const EditorPage = () => {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || "Có lỗi xảy ra khi lấy title");
+          throw new Error(data.error || "An error occurred while fetching title");
         }
 
         setDocument(data);

@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb'
 
 if (!process.env.MONGODB_URI) {
-  throw new Error('Thiếu biến môi trường MONGODB_URI')
+  throw new Error('Missing MONGODB_URI environment variable')
 }
 
 const uri = process.env.MONGODB_URI

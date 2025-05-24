@@ -34,8 +34,8 @@ const DocumentTable = () => {
       setDocuments(data.documents);
       setHasMore(data.pagination.hasMore);
     } catch (err) {
-      setError(err.message || "Có lỗi xảy ra khi tải dữ liệu");
-      toast.error("Không thể tải danh sách tài liệu");
+      setError(err.message || "An error occurred when loading data");
+      toast.error("Unable to load document list");
     } finally {
       setInitialLoading(false);
     }
@@ -64,8 +64,8 @@ const DocumentTable = () => {
       setHasMore(data.pagination.hasMore);
     } catch (error) {
       console.error("Error loading more documents:", error);
-      setError("Có lỗi xảy ra khi tải thêm dữ liệu");
-      toast.error("Không thể tải thêm tài liệu");
+      setError("An error occurred when loading more data");
+      toast.error("Unable to load more documents");
     } finally {
       setLoading(false);
     }
@@ -77,7 +77,7 @@ const DocumentTable = () => {
     }
   }, [inView]);
 
-  // Đóng dropdown khi click ra ngoài
+  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -97,7 +97,7 @@ const DocumentTable = () => {
 
 
 
-  // Xử lý click vào hàng để điều hướng
+  // Handle click on row to navigate
   const handleRowClick = useCallback((documentId) => {
     router.push(`/document/${documentId}`);
   }, [router]);
@@ -108,32 +108,32 @@ const DocumentTable = () => {
     setOpenDropdownId(documentId);
   }, [openDropdownId]);
 
-  // Hiển thị modal xác nhận xóa
+  // Show delete confirmation modal
   const handleDeleteClick = (e, document) => {
-    e.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+    e.stopPropagation(); // Prevent click event from propagating
     setDocumentToDelete(document);
     setShowConfirmModal(true);
-    setOpenDropdownId(null); // Đóng dropdown
+    setOpenDropdownId(null); // Close dropdown
   };
 
-  // Xóa tài liệu
+  // Delete document
   const deleteDocument = async () => {
     if (!documentToDelete) return;
 
-    const toastId = toast.loading("Đang xóa tài liệu...");
+    const toastId = toast.loading("Deleting document...");
 
     try {
       setDeleteLoading(documentToDelete._id);
       await documentService.deleteDocument(documentToDelete._id);
 
-      // Cập nhật danh sách tài liệu sau khi xóa
+      // Update document list after deletion
       setDocuments((prev) =>
         prev.filter((doc) => doc._id !== documentToDelete._id)
       );
       setShowConfirmModal(false);
 
       toast.update(toastId, {
-        render: "Đã xóa tài liệu thành công",
+        render: "Document deleted successfully",
         type: "success",
         isLoading: false,
         autoClose: 3000,
@@ -141,7 +141,7 @@ const DocumentTable = () => {
     } catch (err) {
       console.error("Error deleting document:", err);
       toast.update(toastId, {
-        render: "Không thể xóa tài liệu",
+        render: "Unable to delete document",
         type: "error",
         isLoading: false,
         autoClose: 5000,
@@ -160,7 +160,7 @@ const DocumentTable = () => {
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
-          Thử lại
+          Try again
         </button>
       </div>
     );
@@ -180,16 +180,16 @@ const DocumentTable = () => {
         <thead className="bg-gray-50">
           <tr>
             <th className="text-left py-4 px-6 text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Tên
+              Name
             </th>
             <th className="text-center py-4 px-6 text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Người tạo
+              Created by
             </th>
             <th className="text-right py-4 px-6 text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Truy cập gần nhất
+              Last accessed
             </th>
             <th className="py-4 px-6 text-xs font-medium text-gray-600 uppercase tracking-wider text-center w-16">
-              Thao tác
+              Action
             </th>
           </tr>
         </thead>
@@ -218,21 +218,21 @@ const DocumentTable = () => {
         )}
       </div>
 
-      {/* Message khi không còn data */}
+      {/* Message when there is no more data */}
       {!hasMore && hasDocuments && (
         <div className="text-center pb-4 text-gray-500">
-          Đã hiển thị tất cả tài liệu
+          All documents are displayed
         </div>
       )}
 
-      {/* Message khi không có tài liệu nào */}
+      {/* Message when there are no documents */}
       {!hasDocuments && !initialLoading && (
         <div className="text-center py-8 text-gray-500">
-          Không có tài liệu nào
+          No documents found
         </div>
       )}
 
-      {/* Modal xác nhận xóa */}
+      {/* Delete confirmation modal */}
       {showConfirmModal && (
         <ConfirmDeleteModal
           document={documentToDelete}

@@ -14,41 +14,41 @@ const TableMenu  = ({ editor, position, onClose }) => {
 
   const menuItems = [
     {
-      label: 'Thêm cột bên trái',
+      label: 'Add column to left',
       action: () => editor.chain().focus().addColumnBefore().run(),
       icon: <ArrowLeftToLine className="w-4 h-4" />,
     },
     {
-      label: 'Thêm cột bên phải',
+      label: 'Add column to right',
       action: () => editor.chain().focus().addColumnAfter().run(),
       icon: <ArrowRightToLine className="w-4 h-4" />,
     },
     {
-      label: 'Xóa cột',
+      label: 'Delete column',
       action: () => editor.chain().focus().deleteColumn().run(),
       icon: <MinusSquare className="w-4 h-4" />,
       isDanger: true,
     },
     { type: 'separator' },
     {
-      label: 'Thêm dòng phía trên',
+      label: 'Add row above',
       action: () => editor.chain().focus().addRowBefore().run(),
       icon: <ArrowUpToLine className="w-4 h-4" />,
     },
     {
-      label: 'Thêm dòng phía dưới',
+      label: 'Add row below',
       action: () => editor.chain().focus().addRowAfter().run(),
       icon: <ArrowDownToLine className="w-4 h-4" />,
     },
     {
-      label: 'Xóa dòng',
+      label: 'Delete row',
       action: () => editor.chain().focus().deleteRow().run(),
       icon: <MinusSquare className="w-4 h-4" />,
       isDanger: true,
     },
     { type: 'separator' },
     {
-      label: 'Xóa bảng',
+      label: 'Delete table',
       action: () => editor.chain().focus().deleteTable().run(),
       icon: <Trash className="w-4 h-4" />,
       isDanger: true,
