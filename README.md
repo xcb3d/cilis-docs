@@ -2,6 +2,8 @@
 
 A real-time collaborative document editor that enables seamless co-authoring and content creation.
 
+https://github.com/user-attachments/assets/276ba797-c250-451a-bfaf-7c509e3afd56
+
 ## Features
 
 - **Real-time Collaboration**: Multiple users can edit documents simultaneously with real-time cursor presence and updates.
